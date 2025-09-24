@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Output 
+output_audio/
+converted_audio.wav
+
+# Pretrained models
+pretrained_models/
+
+# Model checkpoints or large binaries
+*.pt
+*.ckpt
+*.h5
+*.pb
+*.tflite
+*.data-*
+
+# Logs and runtime files
+*.log
+*.pid
+*.sqlite
+*.db
+
+# OS / IDE / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Zip artifacts
+*.zip
+
+# Streamlit cache
+.streamlit/

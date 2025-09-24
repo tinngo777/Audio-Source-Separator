@@ -1,15 +1,21 @@
 import os
 import streamlit as st
 import uuid
+import numpy as np
 
 def show_title_and_uploader():
-    st.title("Audio Source Separator")
-    uploaded_file = st.file_uploader("Upload an audio or video file", type=['mp3', 'wav', 'mp4', 'mov'])
+    st.title("TN Audio Player and Separator")
+    uploaded_file = st.file_uploader("Upload your audio", type=['mp3', 'wav', 'mp4', 'mov'])
     if uploaded_file:
         st.success("File uploaded successfully.")
-        file_path = f"temp_input_{uploaded_file.name}"
+        file_path = f"{uploaded_file.name}"
         return uploaded_file, file_path
     return None, None
+
+def show_audio_controls(input_audio_path):
+    audio_file = open(input_audio_path, "rb")
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format="audio/ogg")
 
 
 def show_results(stem_folder, zip_path):

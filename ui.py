@@ -19,9 +19,10 @@ def show_title_and_uploader():
         return uploaded_file, file_path
     return None, None
 
-def show_audio_player_ui(uploaded_file):
+def show_audio_player_ui(file_path):
     # Read and encode audio file as base64
-    audio_bytes = uploaded_file.read()
+    with open(file_path, "rb") as f:
+        audio_bytes = f.read()
     base64_audio = base64.b64encode(audio_bytes).decode()
 
     html_string = f"""
@@ -31,7 +32,7 @@ def show_audio_player_ui(uploaded_file):
 
       <div style="margin-top:5px;">
         <button onclick="wavesurfer.play()">▶</button>
-        <button onclick=wavesurfer.pause()">⏸</button>
+        <button onclick="wavesurfer.pause()">⏸</button>
         <button onclick="wavesurfer.stop()">⏹ Stop</button>
         <label style="color:white;margin-left:10px;">Volume:</label>
         <input type="range" min="0" max="1" step="0.01" value="1" onchange="wavesurfer.setVolume(this.value)" style="vertical-align:middle;">

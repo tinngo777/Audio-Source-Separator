@@ -6,13 +6,12 @@ def main():
     uploaded_file, file_path = show_title_and_uploader()
 
     if uploaded_file:
-        show_audio_player_ui(uploaded_file)
+        input_audio_path = handle_file_upload(uploaded_file, file_path)
+        show_audio_player_ui(input_audio_path)
+
         st.markdown("---")
-
-
         if st.button("Separate Audio"):
             with st.spinner("Separating audio... please wait."):
-                input_audio_path = handle_file_upload(uploaded_file, file_path)
                 stem_folder, zip_path = run_audio_pipeline(input_audio_path, uploaded_file.name)
                 st.session_state.stem_folder = stem_folder
                 st.session_state.zip_path = zip_path
